@@ -18,7 +18,8 @@ var debug = false,
         dPadRight: 124, // Arrow right
         dPadDown: 125, // Arrow down
         dPadLeft: 123, // Arrow left
-        triangle: 49 // Space
+        triangle: 49, // Space
+        square: 36 // Enter
       },
       mouse: {
         deltaDivisorX: 40,
