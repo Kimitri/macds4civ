@@ -11,55 +11,7 @@ var debug = false,
     devices = hid.devices(),
     controller = _(devices).filter(isDS4HID).first(),
     previous = {},
-    options = {
-      keys: {
-        trackPadButton: 53, // Escape
-        dPadUp: 126, // Arrow up
-        dPadRight: 124, // Arrow right
-        dPadDown: 125, // Arrow down
-        dPadLeft: 123, // Arrow left
-        triangle: 49, // Space
-        square: 36 // Enter
-      },
-      mouse: {
-        deltaDivisorX: 40,
-        deltaDivisorY: 40,
-        buttons: {
-          cross: 0,
-          circle: 1
-        }
-      },
-      analog: {
-        sticks: {
-          leftAnalogX: {
-            origin: 127,
-            deadZone: 20
-          },
-          leftAnalogY: {
-            origin: 127,
-            deadZone: 20
-          },
-          rightAnalogX: {
-            origin: 127,
-            deadZone: 20
-          },
-          rightAnalogY: {
-            origin: 127,
-            deadZone: 20
-          }
-        },
-        triggers: {
-          l2Analog: {
-            origin: 0,
-            deadZone: 0
-          },
-          r2Analog: {
-            origin: 0,
-            deadZone: 0
-          }
-        }
-      }
-    };
+    options = require('konfu');
 
 if (!controller) {
   throw new Error('Could not find desired controller.');
@@ -72,6 +24,8 @@ if (isBluetoothHID(controller)) {
     offset = 2;
     hidDevice.getFeatureReport(0x04, 66);
 }
+
+console.log('macds4civ is now proxying HID events.\nPress Ctrl+C to quit.');
 
 
 
@@ -101,7 +55,7 @@ hidDevice.on('data', function(buf) {
   triggerKeys(hidData);
   
   previous = hidData;
-  debug && console.log(hidData);
+  options.debug && console.log(hidData);
 });
 
 

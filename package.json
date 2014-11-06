@@ -17,6 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "ds4": "^0.2.0",
+    "konfu": "^1.1.5",
     "lodash": "^2.4.1",
     "mac-vhid": "^1.0.0",
     "node-hid": "^0.3.2"

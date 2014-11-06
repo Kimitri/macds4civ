@@ -1,0 +1,50 @@
+{
+  "debug": false,
+  "keys": {
+    "trackPadButton": 53,
+    "dPadUp": 126,
+    "dPadRight": 124,
+    "dPadDown": 125,
+    "dPadLeft": 123,
+    "triangle": 49,
+    "square": 36
+  },
+  "mouse": {
+    "deltaDivisorX": 40,
+    "deltaDivisorY": 40,
+    "buttons": {
+      "cross": 0,
+      "circle": 1
+    }
+  },
+  "analog": {
+    "sticks": {
+      "leftAnalogX": {
+        "origin": 127,
+        "deadZone": 20
+      },
+      "leftAnalogY": {
+        "origin": 127,
+        "deadZone": 20
+      },
+      "rightAnalogX": {
+        "origin": 127,
+        "deadZone": 20
+      },
+      "rightAnalogY": {
+        "origin": 127,
+        "deadZone": 20
+      }
+    },
+    "triggers": {
+      "l2Analog": {
+        "origin": 0,
+        "deadZone": 0
+      },
+      "r2Analog": {
+        "origin": 0,
+        "deadZone": 0
+      }
+    }
+  }
+}
