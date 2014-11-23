@@ -50,6 +50,7 @@ hidDevice.on('data', function(buf) {
   // Trigger mouse events
   machid.mouseMoveDelta(Math.round(relative.leftAnalogX / options.mouse.deltaDivisorX), Math.round(relative.leftAnalogY / options.mouse.deltaDivisorY));
   triggerMouseButtons(hidData);
+  triggerMouseJumps(hidData);
   
   // Trigger keyboard events
   triggerKeys(hidData);
@@ -80,6 +81,27 @@ function triggerMouseButtons(hidData) {
     }
   }
 }
+
+
+/**
+ * Trigger mouse pointer jump events.
+ * 
+ * These are used to set the absolute mouse pointer position on the screen. This
+ * is very useful as the Civ V UI otherwise forces extremely long mouse travel
+ * paths.
+ * 
+ * @param  {object} hidData
+ * HID data.
+ */
+function triggerMouseJumps(hidData) {
+  var jumps = options.mouse.jumps;
+  for (var i in jumps) {
+    if (jumps.hasOwnProperty(i) && hidData[i]) {
+      machid.mouseMoveABS(jumps[i].x, jumps[i].y);
+    }
+  }
+}
+
 
 /**
  * Trigger keyboard events.
